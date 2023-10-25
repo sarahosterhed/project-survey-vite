@@ -3,13 +3,16 @@ export const MusicStyle = ({ inputValue, updateFormData }) => {
     const handleMusicStyle = (e) => updateFormData("musicStyle", e.target.value);
     return (
         <div>
-            <select>
+            <select
+                onChange={handleMusicStyle}
+                value={inputValue}
+            >
                 <option value="" selected disabled>Choose an option</option>
-                <option value="hip-hop" onChange={handleMusicStyle}>Hip-hop</option>
-                <option value="country" onChange={handleMusicStyle}>Country</option>
-                <option value="pop" onChange={handleMusicStyle}>Pop</option>
-                <option value="rock" onChange={handleMusicStyle}>Rock</option>
-                <option value="jazz" onChange={handleMusicStyle}>Jazz</option>
+                <option value="hip-hop">Hip-hop</option>
+                <option value="country">Country</option>
+                <option value="pop">Pop</option>
+                <option value="rock">Rock</option>
+                <option value="jazz">Jazz</option>
             </select>
         </div>
 
