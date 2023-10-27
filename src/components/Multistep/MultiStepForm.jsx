@@ -8,6 +8,7 @@ import { Energy } from "./Energy.jsx";
 import { Submit } from "./Submit.jsx";
 import { ThemeSong } from "./ThemeSong.jsx";
 
+
 export const MultiStepForm = () => {
     // state to store form data
     const [formData, setFormData] = useState({
@@ -28,15 +29,15 @@ export const MultiStepForm = () => {
         setCurrentStep(1);
     }
 
-    
+
 
     const nextStep = () => {
         if (currentStep === 1) setCurrentStep(currentStep + 1);
         else if (formData.name === "") setCurrentStep(currentStep);
         else if (currentStep < 7) setCurrentStep(currentStep + 1);
-         
+
     }
-         
+
 
     const previousStep = () => {
         if (currentStep > 1) setCurrentStep(currentStep - 1);
@@ -44,9 +45,9 @@ export const MultiStepForm = () => {
 
     // function to get a value from range slider and turn into word
     const energyValueToWords = () => {
-        if (formData.energy >= 70 ) {
+        if (formData.energy >= 70) {
             return "High"
-        } else if (formData.energy >= 40 && formData.energy < 70 ) {
+        } else if (formData.energy >= 40 && formData.energy < 70) {
             return "Medium"
         } else {
             return "Low"
@@ -58,7 +59,7 @@ export const MultiStepForm = () => {
 
     //Render the component
     return (
-        <div>
+        <div className="container">
             {currentStep === 1 ? <Intro /> : ""}
 
             {currentStep === 2 && (
@@ -82,26 +83,26 @@ export const MultiStepForm = () => {
             )}
 
             {currentStep === 7 && (
-                <ThemeSong name={formData.name} mood={formData.mood} musicStyle={formData.musicStyle} energy={energyValueToWords()}/>
+                <ThemeSong name={formData.name} mood={formData.mood} musicStyle={formData.musicStyle} energy={energyValueToWords()} />
             )}
 
 
 
 
-            <div className="nav-btn">
+            <div className="navBtn">
 
                 {currentStep === 1 && <button className="btn" onClick={nextStep}>Start</button>}
 
-                {(currentStep > 1) && (currentStep < 6) && <button className="btn" onClick={previousStep}>Back</button>}
+                {(currentStep > 1) && (currentStep < 6) && <button className="btn" value="back" onClick={previousStep}>Back</button>}
 
-                {(currentStep > 1) && (currentStep < 6) && <input type="submit" value="Next" className="btn" onClick={nextStep} />}
+                {(currentStep > 1) && (currentStep < 6) && <button className="btn" value="next" onClick={nextStep}>Next</button>}
 
-                {currentStep === 6 &&  <input type="submit" value="Submit" className="btn" onClick={nextStep} />}
+                {currentStep === 6 && <button className="btn" value="submit" onClick={nextStep}>Submit</button>}
 
                 {currentStep === 7 && <button className="btn" onClick={firstStep}>Make another</button>}
 
             </div>
-        </div>
+        </div >
     );
 
 };

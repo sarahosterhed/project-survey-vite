@@ -2,7 +2,8 @@ export const MusicStyle = ({ inputValue, updateFormData }) => {
 
     const handleMusicStyle = (e) => updateFormData("musicStyle", e.target.value);
     return (
-        <div>
+        <div className="contentWrap">
+            <h1>Choose a musical style you prefer</h1>
             <select value={inputValue} onChange={handleMusicStyle}>
                 <option value="" selected disabled>Choose an option</option>
                 <option value="hip-hop">Hip-hop</option>
